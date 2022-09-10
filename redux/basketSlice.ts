@@ -11,7 +11,7 @@ const initialState: BasketState = {
 }
 
 export const basketSlice = createSlice({
-  name: 'basket',
+  name: 'basket',  
   initialState,
   reducers: {
     addToBasket: (state: BasketState, action: PayloadAction<Product>) => {
