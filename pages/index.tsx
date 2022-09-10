@@ -3,8 +3,27 @@ import Head from "next/head";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import { Tab } from '@headlessui/react'
+import { fetchCategories } from "../utils/fetchCategories";
+import { fetchProducts } from "../utils/fetchProducts";
+import Product from "../components/Product";
 
-const Home: NextPage = () => {
+
+interface Props {
+  categories: Category[];
+  products: Product[];
+  // session: Session | null;
+}
+
+const Home = ({categories, products}: Props) => {
+
+  const showProducts = (category: number) => {
+    return products
+      .filter((product) => product.category._ref === categories[category]._id)
+      .map((product) => <Product product={product} key={product._id} />); // filter products by category
+  };
+
+  
+
   return (
     <div>
       <Head>
@@ -26,7 +45,7 @@ const Home: NextPage = () => {
 
           <Tab.Group>
             <Tab.List className="flex justify-center">
-              {/* {categories.map((category) => (
+              {categories.map((category) => (
                 <Tab
                   key={category._id}
                   id={category._id}
@@ -40,13 +59,13 @@ const Home: NextPage = () => {
                 >
                   {category.title}
                 </Tab>
-              ))} */}
+              ))}
             </Tab.List>
             <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
-              {/* <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
+              <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(1)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(2)}</Tab.Panel>
-              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel> */}
+              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
         </div>
@@ -60,13 +79,16 @@ export default Home;
 // Backend Code
 // Backend Code
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
-  // const categories = await fetchCategories()
+  const categories = await fetchCategories()
+  const products = await fetchProducts()
+
 
   return {
     props: {
-
+      categories,
+      products
     }
   }
 }
