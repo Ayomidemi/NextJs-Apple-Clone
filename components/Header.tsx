@@ -15,13 +15,17 @@ const Header = () => {
         </h1>
 
         <div className="space-x-8">
-            <Button title='Buy Now'/>
-            <a className="link">Learn More</a>
+          <a href="/#products">
+            <Button title="Buy Now" />
+          </a>
+          <a className="link" href="https://www.apple.com/ng/" target="_blank">
+            Learn More
+          </a>
         </div>
       </div>
 
       <div className="relative hidden h-[450px] w-[450px] transition-all duration-500 md:inline lg:h-[650px] lg:w-[600px]">
-        <Image src='/iphone.png' layout="fill" objectFit="contain"/>
+        <Image src="/iphone.png" layout="fill" objectFit="contain" />
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 const NavBar = () => {
-    const session = false
+  const session = false;
 
   return (
     <header className="fixed top-30 z-30 flex w-full items-center justify-between bg-[#E7ECEE] p-4">
@@ -25,27 +25,35 @@ const NavBar = () => {
       </div>
 
       <div className="hidden flex-1 items-center justify-center space-x-8 md:flex">
-        <a className="headerLink">Product</a>
-        <a className="headerLink">Explore</a>
-        <a className="headerLink">Support</a>
-        <a className="headerLink">Business</a>
+        <a href="/#products" className="link headerLink">
+          MacBook
+        </a>
+        <a href="/#products" className="headerLink link">
+          Apple Watch
+        </a>
+        <a href="/#products" className="headerLink link">
+          iPhone
+        </a>
+        <a href="/#products" className="headerLink link">
+          iPad
+        </a>
       </div>
 
       <div className="flex items-center justify-center gap-x-4 md:w-1/5">
         <MagnifyingGlassIcon className="headerIcon" />
-        <Link href='/checkout'>
-        <div className="relative cursor-pointer">
-        <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-[10px] text-white">
-            5
-          </span>
-          <ShoppingBagIcon className="headerIcon"/>
-        </div>
+        <Link href="/checkout">
+          <div className="relative cursor-pointer">
+            <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-[10px] text-white">
+              5
+            </span>
+            <ShoppingBagIcon className="headerIcon" />
+          </div>
         </Link>
 
         {session ? (
-            <Image
+          <Image
             src={
-            //   session.user?.image ||
+              //   session.user?.image ||
               "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
             }
             alt=""
@@ -55,11 +63,11 @@ const NavBar = () => {
             // onClick={() => signOut()}
           />
         ) : (
-            <UserIcon className="headerIcon"
-            //  onClick={() => signIn()} 
-             />
+          <UserIcon
+            className="headerIcon"
+            //  onClick={() => signIn()}
+          />
         )}
-        
       </div>
     </header>
   );
