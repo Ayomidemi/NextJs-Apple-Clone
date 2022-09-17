@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+.env
+# /apple-clone/node_modules for ignoring a file/folder in git commit
 
 # testing
 /coverage
