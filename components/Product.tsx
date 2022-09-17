@@ -1,7 +1,10 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import * as React from "react";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../redux/basketSlice";
 import { urlFor } from "../sanity";
+import toast from 'react-hot-toast'
 
 interface IProductProps {
   product: Product;
@@ -9,8 +12,14 @@ interface IProductProps {
 
 const Product: React.FunctionComponent<IProductProps> = ({ product }) => {
 
+  const dispatch = useDispatch()
+
     const addItemToBasket = () => {
-        
+      dispatch(addToBasket(product))
+
+      toast.success(`${product.title} added to basket`, {
+        position: "bottom-center",
+      });
     }
 
   return (

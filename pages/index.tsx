@@ -6,6 +6,7 @@ import { Tab } from '@headlessui/react'
 import { fetchCategories } from "../utils/fetchCategories";
 import { fetchProducts } from "../utils/fetchProducts";
 import Product from "../components/Product";
+import Basket from "../components/Basket";
 
 
 interface Props {
@@ -32,6 +33,8 @@ const Home = ({categories, products}: Props) => {
       </Head>
 
       <NavBar />
+
+      <Basket />
 
       <main className="bg-[#E7ECEE] relative h-[200vh]">
         <Header />

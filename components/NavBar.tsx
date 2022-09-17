@@ -6,9 +6,12 @@ import {
   ShoppingBagIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
+import { selectBasketItems } from "../redux/basketSlice";
 
 const NavBar = () => {
   const session = false;
+  const items = useSelector(selectBasketItems);
 
   return (
     <header className="fixed top-30 z-30 flex w-full items-center justify-between bg-[#E7ECEE] p-4">
@@ -25,16 +28,16 @@ const NavBar = () => {
       </div>
 
       <div className="hidden flex-1 items-center justify-center space-x-8 md:flex">
-        <a href="/#products" className="link headerLink">
+        <a href="/#products" className="headerLink">
           MacBook
         </a>
-        <a href="/#products" className="headerLink link">
+        <a href="/#products" className="headerLink">
           Apple Watch
         </a>
-        <a href="/#products" className="headerLink link">
+        <a href="/#products" className="headerLink">
           iPhone
         </a>
-        <a href="/#products" className="headerLink link">
+        <a href="/#products" className="headerLink">
           iPad
         </a>
       </div>
@@ -43,9 +46,11 @@ const NavBar = () => {
         <MagnifyingGlassIcon className="headerIcon" />
         <Link href="/checkout">
           <div className="relative cursor-pointer">
-            <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-[10px] text-white">
-              5
-            </span>
+            {items.length > 0 && (
+              <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-[10px] text-white">
+                {items.length}
+              </span>
+            )}
             <ShoppingBagIcon className="headerIcon" />
           </div>
         </Link>
