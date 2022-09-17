@@ -29,7 +29,7 @@ const CheckoutProduct: React.FunctionComponent<ICheckoutProductProps> = ({
   const removeItemFromBasket = () => {
     dispatch(removeFromBasket({ id }));
 
-    toast.error(`This feature is coming soon, please bear with us`, {
+    toast.error(`This feature is coming soon. Please refresh the page to clear your orders`, {
       position: "bottom-center",
     });
   };

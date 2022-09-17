@@ -15,6 +15,7 @@ import { useMediaQuery } from "react-responsive";
 import Currency from "react-currency-formatter";
 import { GetServerSideProps } from "next";
 import { fetchLineItems } from "../utils/fetchLineItems";
+import { useSession } from "next-auth/react";
 
 interface ISuccessProps {
   products: StripeProduct[];
@@ -29,7 +30,7 @@ const Success: React.FunctionComponent<ISuccessProps> = ({ products }) => {
     (acc, product) => acc + product.price.unit_amount / 100,
     0
   );
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
 
   React.useEffect(() => {
     setMounted(true);
@@ -83,7 +84,7 @@ const Success: React.FunctionComponent<ISuccessProps> = ({ products }) => {
               </p>
               <h4 className="text-lg">
                 Thank you{" "}
-                {/* {session ? session.user?.name?.split(" ")[0] : "Guest"} */}
+                {session ? session.user?.name?.split(" ")[0] : "Guest"}
               </h4>
             </div>
           </div>
