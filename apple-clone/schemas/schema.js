@@ -34,3 +34,5 @@ export default createSchema({
     account,
   ]),
 })
+
+// https://appleclone.sanity.studio

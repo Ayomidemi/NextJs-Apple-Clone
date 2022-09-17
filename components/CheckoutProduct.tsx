@@ -6,7 +6,6 @@ import Image from "next/image";
 import { urlFor } from "../sanity";
 import { ChevronDownIcon, PlusCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Currency from "react-currency-formatter";
-import Link from "next/link";
 
 interface ICheckoutProductProps {
   items: Product[];
@@ -17,12 +16,13 @@ const CheckoutProduct: React.FunctionComponent<ICheckoutProductProps> = ({
   id,
   items,
 }) => {
-  const imgasst = items.filter((item) => item)[1];
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const imgasst: any = items.filter((item) => item)[1];
+
   const asst = imgasst.filter((item: any) => item)[0];
 
-  console.log(asst.image[0].asset._ref);
+  // console.log(asst.image[0].asset._ref);
 
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ const CheckoutProduct: React.FunctionComponent<ICheckoutProductProps> = ({
     });
   };
 
-  console.log(id);
+  // console.log(id);
 
   return (
     <div className="flex flex-col gap-x-4 border-b border-gray-300 pb-5 lg:flex-row lg:items-center py-6">
@@ -63,7 +63,7 @@ const CheckoutProduct: React.FunctionComponent<ICheckoutProductProps> = ({
         <div className="flex flex-col items-end space-y-4">
           <h4 className="text-xl font-semibold lg:text-2xl">
             <Currency
-              quantity={imgasst.reduce((total, item) => total + item.price, 0)}
+              quantity={imgasst.reduce((total: number, item: { price: number; }) => total + item.price, 0)}
               currency="USD"
             />
           </h4>

@@ -36,6 +36,7 @@ interface Image {
   _key: string;
   _type: "image";
   asset: {
+    _ref(_ref: any): unknown;
     url: string;
   };
 }
